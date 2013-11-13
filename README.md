@@ -44,6 +44,9 @@ Don't forget to run the install command.
 Start forp
 -------
 
+Can be done in an auto-prepend-file :
+
+``` php
 // if($User->isAdmin()) {
 $Forp = new Forp\Forp(
     array(
@@ -52,3 +55,4 @@ $Forp = new Forp\Forp(
 );
 $Forp->start();
 // }
+```
