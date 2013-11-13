@@ -1,17 +1,13 @@
 {
     "name": "aterrien/forp",
     "type": "library",
-    "description": "The PHP wrapper for forp extension.",
-    "keywords": ["forp", "profiler", "profile", "debug"],
+    "description": "Wrapper for forp PHP profiler extension.",
+    "keywords": ["forp", "profiler", "debug", "CPU", "memory", "tool", "devtool"],
     "homepage": "http://forp.io",
     "license": "MIT",
     "authors": [
         {
             "name": "Anthony Terrien",
-            "email": "contact@anthonyterrien.com"
-        },
-        {
-            "name": "Ioan Chiriac",
             "email": "contact@anthonyterrien.com"
         }
     ],
