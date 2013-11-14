@@ -19,13 +19,13 @@ Forp\Forp::start($opts)
 ```
 
 with $opts :
-``` php
+
 array(
     'no_internals' => 1,                // enable/disable collect of PHP internals
-    'ui_src' => '<your forp-ui cdn>',   // URL of forp-ui forp.min.js on your CDN
+    'ui_src' => '<your forp-ui cdn>',   // URL of [forp-ui](https://github.com/aterrien/forp-ui/) forp.min.js on your CDN
     'flags' =>  self::FLAG_ALL,         // [forp flags](https://github.com/aterrien/forp-PHP-profiler/#forp_start-flags)
 )
-```
+
 
 Install
 -------
