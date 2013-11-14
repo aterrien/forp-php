@@ -8,13 +8,24 @@ namespace Forp;
  */
 class Forp {
 
+    CONST FLAG_TIME       = 0x0001; // 1
+    CONST FLAG_MEMORY     = 0x0002; // 2
+    CONST FLAG_CPU        = 0x0004; // 4
+    CONST FLAG_ALIAS      = 0x0020; // 32
+    CONST FLAG_CAPTION    = 0x0040; // 64
+    CONST FLAG_GROUPS     = 0x0080; // 128
+    CONST FLAG_HIGHLIGHT  = 0x0100; // 256
+    CONST FLAG_ANNOTATIONS= 0x01E0; // 480 = ALIAS | CAPTION | GROUPS | HIGHLIGHT
+    CONST FLAG_ALL        = 0x03FF; // 1023 = ALL
+
     /**
      * @var array $conf Default configuration
      */
     private $conf = array(
         'version' => '1.1.0',
         'no_internals' => 1,
-        'ui_src' => 'http://aterrien.github.io/forp-ui/javascripts/forp.min.js',
+        'flags' => self::FLAG_ALL,
+        'ui_src' => 'http://cdn.forp.io/js/forp.min.js',
         'async' => false,
     );
 
@@ -54,14 +65,22 @@ class Forp {
                 ini_set('forp.max_nesting_level', 2);
             }
 
+            // Handles flags
+            $flags = 0;
+            if(!empty($this->conf['flags'])) {
+                (($this->conf['flags'] & self::FLAG_TIME) == self::FLAG_TIME) && $flags |= FORP_FLAG_TIME;
+                (($this->conf['flags'] & self::FLAG_MEMORY) == self::FLAG_MEMORY) && $flags |= FORP_FLAG_MEMORY;
+                (($this->conf['flags'] & self::FLAG_CPU) == self::FLAG_CPU) && $flags |= FORP_FLAG_CPU;
+                (($this->conf['flags'] & self::FLAG_ALIAS) == self::FLAG_ALIAS) && $flags |= FORP_FLAG_ALIAS;
+                (($this->conf['flags'] & self::FLAG_CAPTION) == self::FLAG_CAPTION) && $flags |= FORP_FLAG_CAPTION;
+                (($this->conf['flags'] & self::FLAG_GROUPS) == self::FLAG_GROUPS) && $flags |= FORP_FLAG_GROUPS;
+                (($this->conf['flags'] & self::FLAG_HIGHLIGHT) == self::FLAG_HIGHLIGHT) && $flags |= FORP_FLAG_HIGHLIGHT;
+                (($this->conf['flags'] & self::FLAG_ANNOTATIONS) == self::FLAG_ANNOTATIONS) && $flags |= FORP_FLAG_ANNOTATIONS;
+                (($this->conf['flags'] & self::FLAG_ALL) == self::FLAG_ALL) && $flags |= FORP_FLAG_ALL;
+            }
 
-            forp_start();
+            // Starts collector
+            forp_start($flags);
         }
     }
-
 }
-/*
-require '../autoload.php';
-$f = new Forp();
-$f->start();
-*/
