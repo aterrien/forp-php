@@ -11,14 +11,10 @@ What it does :
 * it selects the most appropriate response to the client.
 
 
-API
+API = start($opts)
 -------
 
-``` php
-Forp\Forp::start($opts)
-```
-
-with $opts :
+With $opts :
 
 ``` php
 array(
@@ -27,6 +23,24 @@ array(
     'flags' =>  self::FLAG_ALL,         // forp flags @link https://github.com/aterrien/forp-PHP-profiler/#forp_start-flags
 )
 ```
+
+Example :
+
+``` php
+// if($theCurrentRequestCanProfileTheCurrentScript) {
+
+
+$Forp = new Forp\Forp(array(
+    'ui_src' => '<your forp-ui cdn>',
+));
+$Forp->start();
+
+
+// }
+```
+
+It can be done in an auto-prepend-file.
+
 
 Install
 -------
@@ -42,21 +56,3 @@ Just add this package to the requires of your project (`composer.json`):
 ```
 
 Don't forget to run the install command.
-
-Start forp
--------
-
-Can be done in an auto-prepend-file :
-
-``` php
-// if($theCurrentRequestCanProfileTheCurrentScript) {
-
-
-$Forp = new Forp\Forp(array(
-    'ui_src' => '<your forp-ui cdn>',
-));
-$Forp->start();
-
-
-// }
-```
