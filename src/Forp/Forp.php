@@ -8,6 +8,8 @@ namespace Forp;
  */
 class Forp {
 
+    CONST DEFAULT_UI_SRC = 'http://cdn.forp.io/js/forp.min.js';
+
     CONST FLAG_TIME       = 0x0001; // 1
     CONST FLAG_MEMORY     = 0x0002; // 2
     CONST FLAG_CPU        = 0x0004; // 4
@@ -25,7 +27,7 @@ class Forp {
         'version' => '1.1.0',
         'no_internals' => 1,
         'flags' => self::FLAG_ALL,
-        'ui_src' => 'http://cdn.forp.io/js/forp.min.js',
+        'ui_src' => self::DEFAULT_UI_SRC,
         'async' => false,
     );
 
@@ -43,7 +45,10 @@ class Forp {
     public function start($opts = array())
     {
         if(function_exists('forp_start')) {
+
             $this->conf = array_merge($this->conf, $opts);
+            
+            // Register for shutdown
             $self = $this;
             register_shutdown_function(
                 /**

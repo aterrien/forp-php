@@ -69,6 +69,11 @@ class Response implements IResponse
             }
         }
 
+        //var_dump(\Forp\Forp::DEFAULT_UI_SRC);
+        if($this->conf['ui_src'] == \Forp\Forp::DEFAULT_UI_SRC)
+            trigger_error ('Put forp-ui script on your own CDN and provide "ui_src" option.', E_USER_NOTICE);
+
+
         // asynchrone JavaScript loading + inline JavaScript
         if($this->getConf('async')) {
             return new ResponseHtmlAsync($this->conf);
