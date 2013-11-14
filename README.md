@@ -10,6 +10,17 @@ What it does :
 * it registers the forp output callback on shutdown of the PHP script.
 * it selects the most appropriate response to the client.
 
+Dependencies
+-------
+
+Server-side :
+* [forp-PHP-profiler](https://github.com/aterrien/forp-PHP-profiler/) : must be installed on your server
+
+Client-side :
+* [forp-chrome](https://chrome.google.com/webstore/detail/forp-for-chrome/ngfngijlafennlhobihjppmngeollbnn?hl=fr) : Chrome client for Chrome users
+OR
+* [forp-ui](https://github.com/aterrien/forp-PHP-profiler/) : forp.min.js must be put on your own CDN
+
 
 API = start($opts)
 -------
