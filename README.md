@@ -18,7 +18,9 @@ Server-side :
 
 Client-side :
 * [forp-chrome](https://chrome.google.com/webstore/detail/forp-for-chrome/ngfngijlafennlhobihjppmngeollbnn?hl=fr) : Chrome client for Chrome users
-OR
+
+/OR/
+
 * [forp-ui](https://github.com/aterrien/forp-PHP-profiler/) : forp.min.js must be put on your own CDN
 
 
