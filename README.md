@@ -21,8 +21,9 @@ Forp\Forp::start($opts)
 with $opts :
 ``` php
 array(
-    'no_internals' => 1,    // enable/disable collect of PHP internals
-    'ui_src' => '...'       // URL of forp-ui forp.min.js on your CDN
+    'no_internals' => 1,                // enable/disable collect of PHP internals
+    'ui_src' => '<your forp-ui cdn>',   // URL of forp-ui forp.min.js on your CDN
+    'flags' =>  self::FLAG_ALL,         // [forp flags](https://github.com/aterrien/forp-PHP-profiler/#forp_start-flags)
 )
 ```
 
@@ -34,7 +35,7 @@ Just add this package to the requires of your project (`composer.json`):
 ``` json
 {
     "require":{
-        "aterrien/forp": "@stable"
+        "aterrien/forp": "dev-master"
     }
 }
 ```
@@ -47,12 +48,14 @@ Start forp
 Can be done in an auto-prepend-file :
 
 ``` php
-// if($User->isAdmin()) {
-$Forp = new Forp\Forp(
-    array(
-        'ui_src' => '<http://your-own-CDN.com>/forp-ui/forp.min.js',
-    )
-);
+// if($theCurrentRequestCanProfileTheCurrentScript) {
+
+
+$Forp = new Forp\Forp(array(
+    'ui_src' => '<your forp-ui cdn>',
+));
 $Forp->start();
+
+
 // }
 ```
